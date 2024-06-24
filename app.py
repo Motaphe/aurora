@@ -41,9 +41,9 @@ def predict(image, average_positive_vector, average_negative_vector, is_url=True
     return aesthetic_score*1000 #For Scale & Comparibility
 
 def main():
-    with open("anime_positive_prompt.pkl", "rb") as f:
+    with open("animefood_positive_prompt.pkl", "rb") as f:
         average_positive_vector = pickle.load(f)
-    with open("anime_negative_prompt.pkl", "rb") as f:
+    with open("animefood_negative_prompt.pkl", "rb") as f:
         average_negative_vector = pickle.load(f)
 
     url = "https://img.freepik.com/free-photo/anime-style-clouds_23-2151071778.jpg?t=st=1719202751~exp=1719206351~hmac=1c5ee047b9ad13edc68f938c7a59693d7df833fbbffab79ce4ad77502ab4893b&w=1060"
@@ -81,9 +81,10 @@ def main():
         winner = frames_list[idx]
         cv2.imshow("Most Aesthetic Frames", winner)
         cv2.waitKey(0)
-    cv2.destroyAllWindows()
+        cv2.destroyAllWindows()
 
     print(len(result_indices))
+    print(max_val)
 
 if __name__ == "__main__":
     main()

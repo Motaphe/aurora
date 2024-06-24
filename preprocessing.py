@@ -11,7 +11,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else "cpu")
 processor = AutoProcessor.from_pretrained("openai/clip-vit-base-patch32")
 model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(device)
 
-temp = pd.read_excel(r"anime.xlsx")
+temp = pd.read_excel(r"anime_food.xlsx")
 classes = temp["Col_Names"].tolist()
 classes = [s.lstrip() for s in classes]
 positive_classes = []
@@ -33,8 +33,8 @@ average_positive_vector = np.mean(positive_prompt_vectors, axis=0)
 negative_prompt_vectors = np.array(negative_text_features)
 average_negative_vector = np.mean(negative_prompt_vectors, axis=0)
 
-with open('anime_positive_prompt.pkl', 'wb') as f:
+with open('animefood_positive_prompt.pkl', 'wb') as f:
     pickle.dump(average_positive_vector, f)
-with open('anime_negative_prompt.pkl', 'wb') as f:
+with open('animefood_negative_prompt.pkl', 'wb') as f:
     pickle.dump(average_negative_vector, f)
 
