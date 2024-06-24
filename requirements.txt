@@ -1,0 +1,7 @@
+numpy
+pandas
+pillow
+requests
+torch
+transformers
+openpyxl
